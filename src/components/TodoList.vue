@@ -109,6 +109,7 @@ export default {
     toggleCheckbox(str) {
       const index = this.todoList.findIndex((x) => x.text === str);
       this.todoList[index].isComplete = !this.todoList[index].isComplete;
+      this.setStorage(this.todoList);
     },
 
     /* Filters functions */
@@ -144,6 +145,8 @@ export default {
     onEnd(e) {
       this.oldIndex = e.oldIndex;
       this.newIndex = e.newIndex;
+      this.todoList = this.filteredList
+      // this.setStorage(this.todoList);
     },
   },
 
@@ -260,7 +263,6 @@ input::placeholder {
   transition: transform 0.5s ease;
 }
 .ghost {
-  /* border-left: 10px solid var(--bright-blue); */
   box-shadow: 0px 2px 20px 1px var(--shadow), -12px 0px 0px 0px var(--bright-blue);
 }
 @keyframes rotating {
